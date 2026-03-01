@@ -1,0 +1,6 @@
+@NetFix.API_HostAddress = http://localhost:5289
+
+GET {{NetFix.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

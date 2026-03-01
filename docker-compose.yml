@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: ./src/server/NetFix.API
+    container_name: netfix-api
+    ports:
+      - "5131:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - db
+
+  client:
+    build:
+      context: ./src/client
+    container_name: netfix-client
+    ports:
+      - "5173:80"
+    depends_on:
+      - api
+
+  db:
+    image: postgres:16
+    container_name: netfix-db
+    environment:
+      POSTGRES_USER: netfix
+      POSTGRES_PASSWORD: netfix123
+      POSTGRES_DB: netfixdb
+    ports:
+      - "5432:5432"
