@@ -1,4 +1,5 @@
-﻿using NetFix.Domain.Entities;
+﻿using NetFix.Domain.Common;
+using NetFix.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,9 @@ namespace NetFix.Application.Interfaces
 {
     public interface IApplicationRepository
     {
-        Task AddAsync(ApplicationForm application);
-        Task<ApplicationForm> GetByIdAsync(Guid id);
+        Task<Result<ApplicationForm>> AddAsync(ApplicationForm application, CancellationToken cancellationToken = default);
+        Task<Result<ApplicationForm>> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<Result<IReadOnlyList<ApplicationForm>>> GetAllAsync(int page, int pageSize, CancellationToken cancellationToken = default);
+        Task<Result<int>> GetTotalCountAsync(CancellationToken cancellationToken = default);
     }
 }

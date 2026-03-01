@@ -2,12 +2,13 @@
 using MediatR;
 using NetFix.Application.Features.Applications.DTOs;
 using NetFix.Application.Interfaces;
+using NetFix.Domain.Common;
 using NetFix.Domain.Entities;
 
 namespace NetFix.Application.Features.Applications.Commands.CreateApplication
 {
     public class CreateApplicationCommandHandler
-    : IRequestHandler<CreateApplicationCommand, ApplicationResponse>
+        : IRequestHandler<CreateApplicationCommand, Result<ApplicationResponse>>
     {
         private readonly IApplicationRepository _repository;
         private readonly IMapper _mapper;
@@ -18,18 +19,23 @@ namespace NetFix.Application.Features.Applications.Commands.CreateApplication
             _mapper = mapper;
         }
 
-        public async Task<ApplicationResponse> Handle(CreateApplicationCommand request, CancellationToken cancellationToken)
+        public async Task<Result<ApplicationResponse>> Handle(
+            CreateApplicationCommand request,
+            CancellationToken cancellationToken)
         {
             var entity = new ApplicationForm(
-                request.Request.FullName,
-                request.Request.Email,
-                request.Request.Phone,
-                request.Request.Message
+                request.FullName,
+                request.Email,
+                request.Phone,
+                request.Message
             );
 
-            await _repository.AddAsync(entity);
+            var result = await _repository.AddAsync(entity, cancellationToken);
 
-            return _mapper.Map<ApplicationResponse>(entity);
+            if ( !result.IsSuccess )
+                return Result<ApplicationResponse>.Failure(result.Error!);
+
+            return Result<ApplicationResponse>.Success(_mapper.Map<ApplicationResponse>(entity));
         }
     }
 }
