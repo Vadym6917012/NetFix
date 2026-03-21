@@ -3,7 +3,7 @@ using NetFix.Domain.Entities;
 
 namespace NetFix.Application.Interfaces
 {
-    public interface IApplicationRepository
+    public interface IApplicationFormRepository
     {
         Task<Result<ApplicationForm>> AddAsync(ApplicationForm application, CancellationToken cancellationToken = default);
         Task<Result<ApplicationForm>> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);

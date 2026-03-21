@@ -121,18 +121,18 @@ const ContactForm: React.FC = () => {
                   <div className="row g-3">
                     {/* Name */}
                     <div className="col-sm-6">
-                      <label className="nf-form-label" htmlFor="name">Ім'я *</label>
+                      <label className="nf-form-label" htmlFor="fullname">Ім'я *</label>
                       <input
-                        id="name"
-                        name="name"
+                        id="fullname"
+                        name="fullname"
                         type="text"
-                        className={`nf-form-control form-control ${errors.name ? 'is-invalid' : ''}`}
+                        className={`nf-form-control form-control ${errors.fullname ? 'is-invalid' : ''}`}
                         placeholder="Іван Петренко"
-                        value={values.name}
+                        value={values.fullname}
                         onChange={handleChange}
-                        autoComplete="name"
+                        autoComplete="fullname"
                       />
-                      {errors.name && <div className="nf-invalid-feedback">{errors.name}</div>}
+                      {errors.fullname && <div className="nf-invalid-feedback">{errors.fullname}</div>}
                     </div>
 
                     {/* Phone */}

@@ -6,12 +6,12 @@ using NetFix.Domain.Entities;
 using NetFix.Infrastructure.Data;
 namespace NetFix.Infrastructure.Repositories
 {
-    public class ApplicationRepository : IApplicationRepository
+    public class ApplicationFormRepository : IApplicationFormRepository
     {
         private readonly DataContext _context;
-        private readonly ILogger<ApplicationRepository> _logger;
+        private readonly ILogger<ApplicationFormRepository> _logger;
 
-        public ApplicationRepository(DataContext context, ILogger<ApplicationRepository> logger)
+        public ApplicationFormRepository(DataContext context, ILogger<ApplicationFormRepository> logger)
         {
             _context = context;
             _logger = logger;
@@ -23,7 +23,7 @@ namespace NetFix.Infrastructure.Repositories
         {
             try
             {
-                _context.ApplicationForms.Add(application);
+                await _context.ApplicationForms.AddAsync(application, cancellationToken);
                 await _context.SaveChangesAsync(cancellationToken);
                 return Result<ApplicationForm>.Success(application);
             }

@@ -9,10 +9,10 @@ namespace NetFix.Application.Features.Applications.Queries.GetApplicationById
     public class GetApplicationByIdQueryHandler
         : IRequestHandler<GetApplicationByIdQuery, Result<ApplicationResponse>>
     {
-        private readonly IApplicationRepository _repository;
+        private readonly IApplicationFormRepository _repository;
         private readonly IMapper _mapper;
 
-        public GetApplicationByIdQueryHandler(IApplicationRepository repository, IMapper mapper)
+        public GetApplicationByIdQueryHandler(IApplicationFormRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

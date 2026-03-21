@@ -10,10 +10,10 @@ namespace NetFix.Application.Features.Applications.Queries.GetAllApplications
     public class GetAllApplicationsQueryHandler
         : IRequestHandler<GetAllApplicationsQuery, Result<PagedResult<ApplicationResponse>>>
     {
-        private readonly IApplicationRepository _repository;
+        private readonly IApplicationFormRepository _repository;
         private readonly IMapper _mapper;
 
-        public GetAllApplicationsQueryHandler(IApplicationRepository repository, IMapper mapper)
+        public GetAllApplicationsQueryHandler(IApplicationFormRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

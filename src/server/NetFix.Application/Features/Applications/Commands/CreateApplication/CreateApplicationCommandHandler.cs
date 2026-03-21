@@ -10,10 +10,10 @@ namespace NetFix.Application.Features.Applications.Commands.CreateApplication
     public class CreateApplicationCommandHandler
         : IRequestHandler<CreateApplicationCommand, Result<ApplicationResponse>>
     {
-        private readonly IApplicationRepository _repository;
+        private readonly IApplicationFormRepository _repository;
         private readonly IMapper _mapper;
 
-        public CreateApplicationCommandHandler(IApplicationRepository repository, IMapper mapper)
+        public CreateApplicationCommandHandler(IApplicationFormRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
@@ -27,6 +27,7 @@ namespace NetFix.Application.Features.Applications.Commands.CreateApplication
                 request.FullName,
                 request.Email,
                 request.Phone,
+                request.Service,
                 request.Message
             );
 

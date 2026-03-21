@@ -11,7 +11,7 @@ interface FormState {
 }
 
 const INITIAL_VALUES: ContactFormData = {
-  name: '',
+  fullname: '',
   phone: '',
   email: '',
   service: '',
@@ -40,10 +40,10 @@ const useContactForm = () => {
   };
 
   const validate = (): boolean => {
-    const { name, phone, email, service } = state.values;
+    const { fullname, phone, email, service } = state.values;
     const errors: Partial<ContactFormData> = {};
 
-    if (!name.trim()) errors.name = "Введіть ім'я";
+    if (!fullname.trim()) errors.fullname = "Введіть ім'я";
     if (!phone.trim()) errors.phone = 'Введіть телефон';
     else if (!/^\+?[\d\s\-()]{7,15}$/.test(phone))
       errors.phone = 'Невірний формат телефону';

@@ -8,6 +8,7 @@ namespace NetFix.Application.Features.Applications.Commands.CreateApplication
         string FullName,
         string Email,
         string Phone,
+        string Service,
         string Message
         ) : IRequest<Result<ApplicationResponse>>;
 }

@@ -21,7 +21,7 @@ namespace NetFix.Infrastructure
             });
 
             // Repository
-            services.AddScoped<IApplicationRepository, ApplicationRepository>();
+            services.AddScoped<IApplicationFormRepository, ApplicationFormRepository>();
 
             return services;
         }

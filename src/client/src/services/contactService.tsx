@@ -1,7 +1,7 @@
 import type { ContactFormData, ApiResponse } from '../types';
 
 // Base URL — change to your .NET Core API address
-const API_BASE_URL = import.meta.env.REACT_APP_API_URL || 'https://localhost:7001/api';
+const API_BASE_URL = import.meta.env.REACT_APP_API_URL || 'https://localhost:7286/api';
 
 /**
  * Submit contact form to .NET Core Web API
@@ -10,7 +10,7 @@ const API_BASE_URL = import.meta.env.REACT_APP_API_URL || 'https://localhost:700
 export const submitContactForm = async (
   data: ContactFormData
 ): Promise<ApiResponse> => {
-  const response = await fetch(`${API_BASE_URL}/contact`, {
+  const response = await fetch(`${API_BASE_URL}/application`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

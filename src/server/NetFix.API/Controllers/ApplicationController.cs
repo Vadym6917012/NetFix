@@ -25,6 +25,7 @@ namespace NetFix.API.Controllers
                 request.FullName,
                 request.Email,
                 request.Phone,
+                request.Service,
                 request.Message
             );
 

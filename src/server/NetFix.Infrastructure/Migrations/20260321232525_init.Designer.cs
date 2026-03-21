@@ -12,7 +12,7 @@ using NetFix.Infrastructure.Data;
 namespace NetFix.Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20260301130923_init")]
+    [Migration("20260321232525_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -32,15 +32,22 @@ namespace NetFix.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Message")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Service")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("SubmittedAt")
