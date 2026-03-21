@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NetFix.Application.Features.Applications.DTOs
+﻿namespace NetFix.Application.Features.Applications.DTOs
 {
     public class ApplicationResponse
     {

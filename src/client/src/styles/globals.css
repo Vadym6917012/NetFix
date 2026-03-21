@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ───────────────────────────────────────────
+   Design Tokens
+─────────────────────────────────────────── */
+:root {
+  --nf-bg:          #07111a;
+  --nf-bg-2:        #0b1a27;
+  --nf-card:        #0f2132;
+  --nf-card-hover:  #132840;
+  --nf-border:      rgba(0, 195, 255, 0.13);
+  --nf-accent:      #00c3ff;
+  --nf-accent-2:    #00ffa3;
+  --nf-glow:        rgba(0, 195, 255, 0.25);
+  --nf-text:        #d8edf9;
+  --nf-muted:       #5e8ba6;
+  --nf-dim:         #2c4f68;
+
+  --font-display:   'Barlow Condensed', sans-serif;
+  --font-body:      'Outfit', sans-serif;
+  --font-mono:      'JetBrains Mono', monospace;
+
+  --radius:         4px;
+  --radius-lg:      10px;
+  --transition:     0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Bootstrap overrides */
+  --bs-body-bg:         var(--nf-bg);
+  --bs-body-color:      var(--nf-text);
+  --bs-border-color:    var(--nf-border);
+  --bs-primary:         var(--nf-accent);
+  --bs-primary-rgb:     0, 195, 255;
+  --bs-font-sans-serif: var(--font-body);
+}
+
+/* ───────────────────────────────────────────
+   Base Reset
+─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--nf-bg);
+  color: var(--nf-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--nf-accent); color: var(--nf-bg); }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--nf-bg); }
+::-webkit-scrollbar-thumb { background: var(--nf-accent); border-radius: 2px; }
+
+/* ───────────────────────────────────────────
+   Typography
+─────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+}
+
+/* ───────────────────────────────────────────
+   Section Utilities
+─────────────────────────────────────────── */
+.section-py {
+  padding-top: clamp(64px, 10vw, 120px);
+  padding-bottom: clamp(64px, 10vw, 120px);
+}
+
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--nf-accent);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.section-tag::before {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  background: var(--nf-accent);
+}
+
+.section-title {
+  font-size: clamp(36px, 5vw, 60px);
+  color: var(--nf-text);
+  margin-bottom: 16px;
+}
+.section-title span { color: var(--nf-accent); }
+
+/* ───────────────────────────────────────────
+   Custom Buttons
+─────────────────────────────────────────── */
+.btn-nf-primary {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--nf-bg) !important;
+  background: var(--nf-accent);
+  border: none;
+  padding: 14px 32px;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-nf-primary:hover { background: var(--nf-accent-2); transform: translateY(-2px); }
+.btn-nf-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.btn-nf-ghost {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--nf-accent);
+  background: transparent;
+  border: 1px solid var(--nf-accent);
+  padding: 13px 32px;
+  clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn-nf-ghost:hover { background: var(--nf-accent); color: var(--nf-bg) !important; }
+
+/* ───────────────────────────────────────────
+   Card
+─────────────────────────────────────────── */
+.nf-card {
+  background: var(--nf-card);
+  border: 1px solid var(--nf-border);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+.nf-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--nf-accent), transparent);
+  opacity: 0;
+  transition: var(--transition);
+}
+.nf-card:hover {
+  background: var(--nf-card-hover);
+  border-color: rgba(0, 195, 255, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+}
+.nf-card:hover::before { opacity: 1; }
+
+/* ───────────────────────────────────────────
+   Form Overrides
+─────────────────────────────────────────── */
+.nf-form-control {
+  background: rgba(255,255,255,0.04) !important;
+  border: 1px solid var(--nf-border) !important;
+  border-radius: var(--radius) !important;
+  color: var(--nf-text) !important;
+  font-family: var(--font-body);
+  padding: 14px 18px !important;
+  transition: var(--transition) !important;
+  font-size: 15px !important;
+}
+.nf-form-control::placeholder { color: var(--nf-muted) !important; }
+.nf-form-control:focus {
+  border-color: var(--nf-accent) !important;
+  box-shadow: 0 0 0 3px var(--nf-glow) !important;
+  background: rgba(0, 195, 255, 0.04) !important;
+  outline: none !important;
+}
+.nf-form-control.is-invalid { border-color: #ff4d6d !important; }
+
+.nf-form-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--nf-muted);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.nf-invalid-feedback {
+  color: #ff4d6d;
+  font-size: 12px;
+  margin-top: 4px;
+  font-family: var(--font-mono);
+}
+
+/* ───────────────────────────────────────────
+   Animations
+─────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.9; }
+}
+@keyframes gridFlow {
+  0%   { background-position: 0 0; }
+  100% { background-position: 60px 60px; }
+}
+
+.anim-fade-up { animation: fadeUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) both; }
+
+/* ───────────────────────────────────────────
+   Background Helpers
+─────────────────────────────────────────── */
+.nf-glow-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  animation: glowPulse 5s ease-in-out infinite;
+}
+
+.nf-grid-bg {
+  background-image:
+    linear-gradient(var(--nf-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--nf-border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridFlow 8s linear infinite;
+}

@@ -1,0 +1,60 @@
+.nf-services {
+  background: var(--nf-bg-2);
+  position: relative;
+}
+
+.nf-services__lead {
+  color: var(--nf-muted);
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 500px;
+}
+
+/* Service card specifics */
+.nf-service-card__icon {
+  color: var(--nf-accent);
+  margin-bottom: 20px;
+  transition: var(--transition);
+}
+.nf-card:hover .nf-service-card__icon {
+  filter: drop-shadow(0 0 12px var(--nf-accent));
+}
+
+.nf-service-card__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--nf-text);
+  margin-bottom: 12px;
+}
+
+.nf-service-card__desc {
+  font-size: 14px;
+  color: var(--nf-muted);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.nf-service-card__features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid var(--nf-border);
+  padding-top: 20px;
+}
+
+.nf-service-card__features li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--nf-muted);
+}
+
+.nf-service-card__features svg {
+  color: var(--nf-accent-2);
+  flex-shrink: 0;
+}

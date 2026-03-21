@@ -1,0 +1,125 @@
+.nf-whyus {
+  background: var(--nf-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.nf-whyus__blob {
+  width: 600px; height: 600px;
+  background: rgba(0, 255, 163, 0.05);
+  top: -100px; left: -150px;
+}
+
+.nf-whyus__lead {
+  color: var(--nf-muted);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* Reason cards */
+.nf-whyus-card {
+  padding: 32px 24px;
+  border: 1px solid var(--nf-border);
+  border-radius: var(--radius-lg);
+  background: var(--nf-card);
+  transition: var(--transition);
+  height: 100%;
+}
+.nf-whyus-card:hover {
+  border-color: rgba(0, 195, 255, 0.3);
+  background: var(--nf-card-hover);
+  transform: translateY(-4px);
+}
+
+.nf-whyus-card__num {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--nf-dim);
+  display: block;
+  line-height: 1;
+  margin-bottom: 16px;
+  transition: var(--transition);
+}
+.nf-whyus-card:hover .nf-whyus-card__num { color: var(--nf-accent); }
+
+.nf-whyus-card__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--nf-text);
+  margin-bottom: 10px;
+}
+
+.nf-whyus-card__desc {
+  font-size: 14px;
+  color: var(--nf-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Process */
+.nf-process {
+  background: var(--nf-card);
+  border: 1px solid var(--nf-border);
+  border-radius: var(--radius-lg);
+  padding: 40px 36px;
+}
+
+.nf-process__steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.nf-process__step {
+  position: relative;
+  padding-right: 24px;
+}
+.nf-process__step:last-child { padding-right: 0; }
+
+.nf-process__step-num {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--nf-accent);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.nf-process__step-line {
+  position: absolute;
+  top: 20px;
+  left: 52px;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--nf-accent), transparent);
+  opacity: 0.3;
+}
+.nf-process__step:last-child .nf-process__step-line { display: none; }
+
+.nf-process__step-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--nf-text);
+  margin-bottom: 8px;
+}
+
+.nf-process__step-desc {
+  font-size: 13px;
+  color: var(--nf-muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .nf-process__steps {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  .nf-process__step-line { display: none; }
+}
+
+@media (max-width: 480px) {
+  .nf-process__steps { grid-template-columns: 1fr; }
+  .nf-process { padding: 28px 20px; }
+}

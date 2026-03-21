@@ -4,7 +4,6 @@ using NetFix.Application.Interfaces;
 using NetFix.Domain.Common;
 using NetFix.Domain.Entities;
 using NetFix.Infrastructure.Data;
-using System;
 namespace NetFix.Infrastructure.Repositories
 {
     public class ApplicationRepository : IApplicationRepository

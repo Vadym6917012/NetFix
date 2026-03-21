@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
-using MediatR;
+﻿using MediatR;
+using Microsoft.Extensions.DependencyInjection;
 using NetFix.Application.Behaviours;
+using System.Reflection;
 
 namespace NetFix.Application
 {
