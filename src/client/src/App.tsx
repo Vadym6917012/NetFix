@@ -8,7 +8,6 @@ import Services from './components/Services/Services';
 import WhyUs from './components/WhyUs/WhyUs';
 import ContactForm from './components/ContactForm/ContactForm';
 import Footer from './components/Footer/Footer';
-import { Analytics } from "@vercel/analytics/next"
 
 const App: React.FC = () => {
   return (
@@ -21,7 +20,6 @@ const App: React.FC = () => {
         <ContactForm />
       </main>
       <Footer />
-      <Analytics />
     </div>
   );
 };
