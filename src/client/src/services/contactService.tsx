@@ -1,7 +1,7 @@
 import type { ContactFormData, ApiResponse } from '../types';
 
 // Base URL — change to your .NET Core API address
-const API_BASE_URL = import.meta.env.REACT_APP_API_URL || 'https://localhost:7286/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
 /**
  * Submit contact form to .NET Core Web API
