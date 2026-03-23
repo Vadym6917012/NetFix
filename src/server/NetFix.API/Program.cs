@@ -27,7 +27,8 @@ builder.Services.AddCors(options =>
                 "http://localhost:3000",          // локальна розробка
                 "https://netfix.space",           // домен
                 "https://www.netfix.space",       // з www
-                "https://net-fix.vercel.app" // Vercel preview
+                "https://net-fix.vercel.app", // Vercel preview
+                "https://netfix-production.up.railway.app"
             )
         .AllowAnyMethod()
         .AllowAnyHeader());
