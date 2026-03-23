@@ -14,7 +14,6 @@ export const submitContactForm = async (
   });
 
   if (!response.ok) {
-    // Handle HTTP errors (400, 500, etc.)
     const error: ApiResponse = await response.json().catch(() => ({
       success: false,
       message: 'Помилка сервера. Спробуйте пізніше.',
