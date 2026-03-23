@@ -28,7 +28,9 @@ builder.Services.AddCors(options =>
                 "https://netfix.space",           // домен
                 "https://www.netfix.space",       // з www
                 "https://net-fix.vercel.app", // Vercel preview
-                "https://netfix-production.up.railway.app"
+                "https://netfix-production.up.railway.app",
+                "https://netfix-production.up.railway.app/api",
+                "https://netfix-production.up.railway.app/api/application"
             )
         .AllowAnyMethod()
         .AllowAnyHeader());
