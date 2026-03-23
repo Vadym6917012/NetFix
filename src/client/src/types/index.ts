@@ -1,6 +1,6 @@
 // Contact form data sent to .NET Core API
 export interface ContactFormData {
-  fullname: string;
+  fullName: string;
   phone: string;
   email: string;
   service: string;

@@ -1,12 +1,7 @@
 import type { ContactFormData, ApiResponse } from '../types';
 
-// Base URL — change to your .NET Core API address
 const API_BASE_URL = import.meta.env.VITE_API_URL || '/api';
 
-/**
- * Submit contact form to .NET Core Web API
- * Endpoint: POST /api/contact
- */
 export const submitContactForm = async (
   data: ContactFormData
 ): Promise<ApiResponse> => {

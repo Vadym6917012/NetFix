@@ -10,8 +10,8 @@ namespace NetFix.Application.Features.Applications.Commands.CreateApplication
                 .NotEmpty().WithMessage("Full name is required.")
                 .MaximumLength(100).WithMessage("Full name cannot exceed 100 characters.");
             RuleFor(x => x.Email)
-                .NotEmpty().WithMessage("Email is required.")
-                .EmailAddress().WithMessage("Invalid email format.");
+                .EmailAddress().WithMessage("Invalid email format.")
+                .When(x => !string.IsNullOrWhiteSpace(x.Email));
             RuleFor(x => x.Phone)
                 .NotEmpty().WithMessage("Phone number is required.")
                 .Matches(@"^\+?[0-9\s\-]{7,20}$").WithMessage("Phone number is not valid.");

@@ -1,4 +1,4 @@
-using NetFix.Application;
+﻿using NetFix.Application;
 using NetFix.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,11 +22,15 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll",
-        policy => policy
-               .AllowAnyOrigin()
-               .AllowAnyMethod()
-               .AllowAnyHeader());
+    options.AddPolicy("AllowFrontend",
+        policy => policy.WithOrigins(
+                "http://localhost:3000",          // локальна розробка
+                "https://netfix.space",           // домен
+                "https://www.netfix.space",       // з www
+                "https://net-fix.vercel.app" // Vercel preview
+            )
+        .AllowAnyMethod()
+        .AllowAnyHeader());
 });
 
 var app = builder.Build();
@@ -37,7 +41,7 @@ if ( app.Environment.IsDevelopment() )
     app.UseSwaggerUI();
 }
 
-app.UseCors("AllowAll");
+app.UseCors("AllowFrontend");
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

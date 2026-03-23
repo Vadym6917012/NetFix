@@ -28,10 +28,10 @@
 
             Id = Guid.NewGuid();
             FullName = fullName.Trim();
-            Email = email.Trim() ?? string.Empty;
+            Email = email?.Trim() ?? string.Empty;
             Phone = phone.Trim();
             Service = service.Trim();
-            Message = message.Trim();
+            Message = message?.Trim();
             SubmittedAt = DateTime.UtcNow;
         }
     }

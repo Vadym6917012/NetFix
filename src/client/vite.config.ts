@@ -9,7 +9,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'https://localhost:7286/api',
+        target: 'https://localhost:7286',
         changeOrigin: true,
         secure: false, // self-signed cert у .NET dev
       },
