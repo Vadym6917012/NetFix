@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/globals.css';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
@@ -20,6 +21,7 @@ const App: React.FC = () => {
         <ContactForm />
       </main>
       <Footer />
+      <SpeedInsights />
     </div>
   );
 };
