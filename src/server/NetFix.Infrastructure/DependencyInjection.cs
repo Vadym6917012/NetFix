@@ -17,7 +17,7 @@ namespace NetFix.Infrastructure
 
             services.AddDbContext<DataContext>(option =>
             {
-                option.UseSqlServer(connectionString);
+                option.UseNpgsql(connectionString);
             });
 
             // Repository
