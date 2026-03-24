@@ -11,12 +11,17 @@ namespace NetFix.Application.Features.Applications.Commands.CreateApplication
         : IRequestHandler<CreateApplicationCommand, Result<ApplicationResponse>>
     {
         private readonly IApplicationFormRepository _repository;
+        private readonly ITelegramService _telegramService;
         private readonly IMapper _mapper;
 
-        public CreateApplicationCommandHandler(IApplicationFormRepository repository, IMapper mapper)
+        public CreateApplicationCommandHandler(
+            IApplicationFormRepository repository,
+            IMapper mapper,
+            ITelegramService telegramService)
         {
             _repository = repository;
             _mapper = mapper;
+            _telegramService = telegramService;
         }
 
         public async Task<Result<ApplicationResponse>> Handle(
@@ -35,6 +40,18 @@ namespace NetFix.Application.Features.Applications.Commands.CreateApplication
 
             if ( !result.IsSuccess )
                 return Result<ApplicationResponse>.Failure(result.Error!);
+
+            var text = $@"
+📩 Нова заявка! {entity.SubmittedAt:dd.MM.yyyy HH:mm}
+
+👤 Ім'я: {entity.FullName}
+📧 Email: {entity.Email}
+📞 Телефон: {entity.Phone}
+🛠 Послуга: {entity.Service}
+💬 Повідомлення: {entity.Message}
+";
+
+            await _telegramService.SendMessageAsync(text);
 
             return Result<ApplicationResponse>.Success(_mapper.Map<ApplicationResponse>(entity));
         }

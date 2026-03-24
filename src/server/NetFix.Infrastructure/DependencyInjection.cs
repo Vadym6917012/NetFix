@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using NetFix.Application.Interfaces;
 using NetFix.Infrastructure.Data;
 using NetFix.Infrastructure.Repositories;
+using NetFix.Infrastructure.Services;
 using System;
 
 namespace NetFix.Infrastructure
@@ -44,6 +45,9 @@ namespace NetFix.Infrastructure
 
             // Repository
             services.AddScoped<IApplicationFormRepository, ApplicationFormRepository>();
+
+            // Services
+            services.AddScoped<ITelegramService, TelegramService>();
 
             return services;
         }
