@@ -1,5 +1,7 @@
-﻿using NetFix.Application;
+﻿using Microsoft.EntityFrameworkCore;
+using NetFix.Application;
 using NetFix.Infrastructure;
+using NetFix.Infrastructure.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +39,12 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+using ( var scope = app.Services.CreateScope() )
+{
+    var db = scope.ServiceProvider.GetRequiredService<DataContext>();
+    db.Database.Migrate();
+}
 
 if ( app.Environment.IsDevelopment() )
 {
